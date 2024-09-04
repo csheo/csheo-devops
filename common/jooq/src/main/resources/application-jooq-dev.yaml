@@ -1,0 +1,15 @@
+jooq: # do not use internal property link(e.g., ${spring.application.name})
+  generator:
+    directory: src/generated
+    datasource:
+      url:
+      schema: entasdfsdb
+      username:
+      password:
+
+logging:
+  level:
+    org.jooq:
+      Constants: debug
+      tools:
+        LoggerListener: debug

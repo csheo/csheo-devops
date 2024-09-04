@@ -1,0 +1,18 @@
+spring:
+  config.activate.on-profile: prd, dev, local
+
+  flyway:
+    enabled: false # spring flyway is disabled, gradle flyway is enabled
+    url: jdbc:mysql://aaa.cluster-ro-ce4qzutyoils.ap-northeast-2.rds.amazonaws.com:3306/
+    user: aaa
+    password: aaa
+    table: tu_flyway_schema_history
+    locations: filesystem:/src/main/resources/db/migration
+    baseline-on-migrate: false
+    domain:
+      table: tu_flyway_domain_schema_history
+      locations: filesystem:../../extra-resources/flyway/db/migration
+      baseline-on-migrate: true
+      baseline-version: 0
+      baseline-description: Baseline for common
+

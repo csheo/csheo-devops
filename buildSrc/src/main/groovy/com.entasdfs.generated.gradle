@@ -1,0 +1,12 @@
+sourceSets {
+    main {
+        java {
+            srcDirs = ["src/main/java", "src/generated"]
+        }
+    }
+}
+
+clean {
+    delete files('src/generated')
+    delete files('src/testFixtures/java/com/entasdfs/common/commoncode/generated')
+}

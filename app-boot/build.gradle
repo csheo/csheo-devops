@@ -1,0 +1,97 @@
+plugins {
+    id 'com.entasdfs.build-convention'
+    id 'com.entasdfs.common-dependency'
+    id 'com.entasdfs.domain-dependency'
+    id 'com.entasdfs.external-domain-dependency'
+    id "com.google.cloud.tools.jib" version "3.4.3"
+}
+
+commonDependency {
+    excludedModules = []
+}
+
+domainDependency {
+    excludedModules = []
+}
+
+externalDomainDependency {
+    excludedModules = []
+}
+
+dependencies {
+}
+
+bootJar {
+    enabled = false
+}
+
+
+
+group = 'com.aaa'
+version = '1.0'
+
+def registry = System.getenv("CONTAINER_REGISTRY_URI")?System.getenv("CONTAINER_REGISTRY_URI"):"semas-dev-container-registry.ncr.gov-ntruss.com"
+def containerName = "sample"
+def tag = System.getenv("TAG")?System.getenv("TAG"):"local"
+def profile = System.getenv("PROFILE")?System.getenv("PROFILE"):"local"
+
+registry = "semas-dev-container-registry.ncr.gov-ntruss.com"
+
+
+java {
+    sourceCompatibility = '21'
+}
+
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+jib {
+    containerizingMode = "packaged"
+    dockerClient {
+        executable = "/usr/local/bin/docker"
+    }
+    from {
+        image = "bellsoft/liberica-runtime-container:jre-21-slim-musl"
+
+        //image = "semas-dev-container-registry.ncr.gov-ntruss.com/openjre17:081402"
+
+        auth {
+            username = System.getenv("CONTAINER_REGISTRY_ACCESS")?System.getenv("CONTAINER_REGISTRY_ACCESS"):""
+            password = System.getenv("CONTAINER_REGISTRY_SECRET")?System.getenv("CONTAINER_REGISTRY_SECRET"):""
+        }
+        registry = "semas-dev-container-registry.ncr.gov-ntruss.com"
+    }
+    to {
+        image = "${registry}/${containerName}:${tag}"
+        auth {
+            username = System.getenv("CONTAINER_REGISTRY_ACCESS")?System.getenv("CONTAINER_REGISTRY_ACCESS"):""
+            password = System.getenv("CONTAINER_REGISTRY_SECRET")?System.getenv("CONTAINER_REGISTRY_SECRET"):""
+        }
+        tags = ["latest"]
+        allowInsecureRegistries = true
+    }
+    container {
+        format = "OCI"
+        mainClass = "com.entasdfs.boot.TemplateApplication"
+        jvmFlags = [
+                //"-Dspring.profiles.active=${profile}",
+                "-Dfile.encoding=UTF-8",
+        ]
+        environment = [
+                //"SPRING_PROFILES_ACTIVE": profile,
+                "SERVER_PORT": "8080",
+                "MANAGEMENT_SERVER_PORT": "8081",
+                "JAVA_TOOL_OPTIONS": "-XX:+UseShenandoahGC",
+                "LANG:": "ko_KR.UTF-8",
+                "LANGUAGE:": "ko_KR;ko;en_US;en",
+                "TZ": "Asia/Seoul"
+        ]
+        ports = ["8080"]
+        creationTime = "USE_CURRENT_TIMESTAMP"
+    }
+}
+

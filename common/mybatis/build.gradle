@@ -1,0 +1,20 @@
+plugins {
+    id 'com.entasdfs.build-convention'
+}
+
+dependencies {
+    def mybatisVersion = project['mybatis.spring-boot-starter.version']
+
+    runtimeOnly 'com.mysql:mysql-connector-j'
+
+    api "org.mybatis.spring.boot:mybatis-spring-boot-starter:${mybatisVersion}"
+
+    implementation project(':common:commoncode')
+    testImplementation testFixtures(project(":common:commoncode"))
+    testImplementation testFixtures(project(":common:tester"))
+    testImplementation "org.mybatis.spring.boot:mybatis-spring-boot-starter-test:${mybatisVersion}"
+}
+
+bootJar {
+    enabled = false
+}

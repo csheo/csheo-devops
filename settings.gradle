@@ -1,0 +1,14 @@
+rootProject.name = 'sample'
+
+// app-boot
+include 'app-boot'
+
+// common
+apply from: 'common/settings-common.gradle'
+
+// domain
+apply from: 'domain/settings-domain.gradle'
+
+// external-domain
+apply from: 'external-domain/settings-external-domain.gradle'
+

@@ -1,0 +1,14 @@
+plugins {
+    id 'com.entasdfs.build-convention'
+    id 'com.entasdfs.test-fixtures'
+}
+
+bootJar {
+    enabled = false
+}
+
+dependencies {
+    testFixturesImplementation 'org.springframework.boot:spring-boot-starter-aop'
+    testFixturesImplementation project(':common:commoncode')
+    testFixturesImplementation project(':common:multilingual')
+}

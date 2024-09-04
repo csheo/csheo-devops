@@ -1,0 +1,14 @@
+include 'common:commoncode'
+include 'common:flyway'
+include 'common:jooq'
+include 'common:jooq:jooq-custom'
+include 'common:security'
+include 'common:mybatis'
+include 'common:tester'
+include 'common:multilingual'
+include 'common:file'
+include 'common:common'
+include 'common:api-docs'
+include 'common:web'
+
+

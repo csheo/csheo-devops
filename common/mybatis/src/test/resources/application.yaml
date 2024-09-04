@@ -1,0 +1,4 @@
+mybatis:
+  type-aliases-package: com.entasdfs.**
+  type-handlers-package: com.entasdfs.**
+  mapper-locations: classpath:mapper/*.xml

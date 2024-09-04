@@ -1,0 +1,47 @@
+spring:
+  profiles:
+    active: local
+
+  application:
+    name: template
+    name-abbr: TP
+  base-package: com.entasdfs
+
+  config:
+    prefix: classpath:application
+    import:
+      - ${spring.config.prefix}-api-docs.yaml
+      - ${spring.config.prefix}-common.yaml
+      - ${spring.config.prefix}-commoncode.yaml
+      - ${spring.config.prefix}-file.yaml
+      - ${spring.config.prefix}-flyway.yaml
+      - ${spring.config.prefix}-jooq.yaml
+      - ${spring.config.prefix}-multilingual.yaml
+      - ${spring.config.prefix}-mybatis.yaml
+      - ${spring.config.prefix}-security.yaml
+      - ${spring.config.prefix}-web.yaml
+
+
+management:
+  metrics:
+    tags:
+      application: ${spring.application.name}
+
+
+
+---
+spring:
+  config:
+    activate:
+      on-profile: dev, local
+    import:
+      - ${spring.config.prefix}-common-${spring.profiles.active}.yaml
+      - ${spring.config.prefix}-jooq-${spring.profiles.active}.yaml
+
+
+
+---
+spring:
+  devtools:
+    restart:
+      enabled: false

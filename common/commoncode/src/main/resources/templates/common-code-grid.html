@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta multilingualName="viewport" content="width=device-width, initial-scale=1">
+	<title>CommonCode Viewer</title>
+	<link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
+	<link rel="stylesheet" th:href="@{/webjars/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css}">
+	<link rel="stylesheet" th:href="@{/webjars/tabulator-tables/6.2.1/dist/css/tabulator.css}">
+	<link rel="stylesheet" th:href="@{/style.css}">
+	<script defer th:src="@{/webjars/bootstrap/5.3.3/js/bootstrap.min.js}"></script>
+	<script defer th:src="@{/webjars/tabulator-tables/6.2.1/dist/js/tabulator.js}"></script>
+	<script defer th:src="@{/common-code.js}"></script>
+</head>
+<body>
+	<div>
+		<label for="search-key">Key:</label>
+		<input type="text" id="search-key" oninput="applyFilter()">
+		<label for="search-id">ID:</label>
+		<input type="text" id="search-id" oninput="applyFilter()">
+		<label for="search-multilingualName">Name:</label>
+		<input type="text" id="search-multilingualName" oninput="applyFilter()">
+	</div>
+	<div id="common-code-table"></div>
+</body>
+</html>

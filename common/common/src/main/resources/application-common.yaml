@@ -1,0 +1,76 @@
+#### Spring
+spring:
+  #### Basic
+  lifecycle.timeout-per-shutdown-phase: 1m
+
+  #### DataSource
+  datasource:
+    reader:
+      url:
+      username:
+      password:
+
+    writer:
+      url:
+      username:
+      password:
+
+    hikari:
+      minimum-idle: 20
+      maximum-pool-size: 20
+      connection-timeout: 2700
+      validation-timeout: 2100
+      idle-timeout: 59000
+      leak-detection-threshold: 59000
+      max-lifetime: 60000
+      data-source-properties:
+        cachePrepStmts: true
+        prepStmtCacheSize: 500
+        prepStmtCacheSqlLimit: 2048
+        useServerPrepStmts: true
+        rewriteBatchedStatements: true
+
+  #### TaskExecutor
+  task:
+    #### @Scheduled
+    scheduling:
+      pool.size: 5
+      #thread-name-prefix: scheduling-
+      shutdown:
+        await-termination: true
+        await-termination-period: 30
+
+  #### Servlet Multipart Handling
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+  #### Spring Cloud
+  cloud:
+    #### Open Feign
+    openfeign:
+      client:
+        config:
+          default:
+            connect-timeout: 2000
+            read-timeout: 2000
+            logger-level: full
+          ## Internal Service
+          korea-exim-bank:
+            url: ${external-service.services.korea-exim-bank.url}
+
+external-service:
+  services:
+    korea-exim-bank:
+      url: https://www.koreaexim.go.kr
+      properties:
+        auth-key: uYQN9dMQRMR3z1Iqv9jeTcvQzPUChCeH
+
+
+#### Logging
+logging:
+  pattern:
+    correlation: "[%X{traceId}-%X{spanId}][%X{memberId},%X{memberRole}] "
+  level:
+    com.entasdfs: info

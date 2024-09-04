@@ -1,0 +1,23 @@
+plugins {
+    id 'com.entasdfs.build-convention'
+    id 'com.entasdfs.test-fixtures'
+    id 'com.entasdfs.api-docs'
+}
+
+dependencies {
+    testFixturesImplementation "jakarta.servlet:jakarta.servlet-api"
+    testFixturesImplementation project(':common:common')
+    testFixturesImplementation project(':common:web')
+    testFixturesImplementation project(':common:multilingual')
+    testFixturesImplementation project(':common:commoncode')
+    testFixturesImplementation testFixtures(project(':common:commoncode'))
+    testFixturesImplementation testFixtures(project(':common:tester'))
+    testFixturesApi 'org.springframework.restdocs:spring-restdocs-mockmvc'
+    testFixturesApi "com.epages:restdocs-api-spec-mockmvc:${project['epages.restdocs.api.spec.version']}"
+}
+
+bootJar {
+    enabled = false
+}
+
+apply from: 'gradle-scripts/docs.gradle'

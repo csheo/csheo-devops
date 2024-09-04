@@ -1,0 +1,21 @@
+plugins {
+    id 'com.entasdfs.build-convention'
+    id 'com.entasdfs.common-dependency'
+    id 'com.entasdfs.api-docs'
+}
+
+dependencies {
+
+}
+
+bootJar {
+    enabled = false
+}
+
+sourceSets {
+    main {
+        resources {
+            srcDir('src/main/java')
+        }
+    }
+}

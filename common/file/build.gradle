@@ -1,0 +1,15 @@
+plugins {
+    id 'com.entasdfs.build-convention'
+}
+
+dependencies {
+    implementation project(':common:common')
+
+    implementation platform("io.awspring.cloud:spring-cloud-aws-dependencies:${project['spring.cloud.aws.version']}")
+    implementation 'io.awspring.cloud:spring-cloud-aws-starter-s3'
+    implementation 'software.amazon.awssdk:apache-client'
+}
+
+bootJar {
+    enabled = false
+}

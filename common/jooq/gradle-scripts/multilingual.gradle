@@ -1,0 +1,13 @@
+def generatorDirectory = jooqProperty.jooq.generator.directory
+
+tasks.register('copyMultilingualConstantDsl', Copy) {
+    from "$generatorDirectory/multilingual/constant"
+    into "$rootProject.projectDir/common/multilingual/src/generated/com/entasdfs/common/multilingual/generated/constant"
+}
+
+tasks.register('deleteMultilingualSourceDirectory', Delete) {
+    delete "$generatorDirectory/multilingual"
+}
+
+copyMultilingualConstantDsl.finalizedBy deleteMultilingualSourceDirectory
+generateDslJooq.finalizedBy copyMultilingualConstantDsl

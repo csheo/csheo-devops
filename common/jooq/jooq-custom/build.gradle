@@ -1,0 +1,12 @@
+plugins {
+    id 'com.entasdfs.build-convention'
+}
+
+dependencies {
+    implementation "org.jooq:jooq-codegen:${project['jooq.version']}"
+    runtimeOnly 'com.mysql:mysql-connector-j:8.3.0'
+}
+
+bootJar {
+    enabled = false
+}

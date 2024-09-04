@@ -1,0 +1,7 @@
+th, td {
+	text-align: center;
+}
+
+td > li {
+	text-align: left;
+}

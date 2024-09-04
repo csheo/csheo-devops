@@ -1,0 +1,43 @@
+openapi3 {
+    servers = [
+            { server ->
+                server.url = 'https://api.dev.entasdfs.com/'
+                server.description = 'Development Server'
+            },
+            { server ->
+                server.url = 'http://localhost:8080'
+                server.description = 'Local Server'
+            }
+    ]
+    title = '\"템플릿\" 도메인 API 규격'
+    description = '경복궁 면세점 - \"템플릿(Template)\" 도메인 API 규격 문서'
+    version = '0.0.1'
+    format = 'yaml'
+}
+
+tasks.register('generateRestDocs', Copy) {
+    def moduleWrapperName = 'domain'
+    println("> Iterate over modules to generate restdocs from :${moduleWrapperName}")
+    if (project.findProject(":${moduleWrapperName}") != null) {
+        project.project(":${moduleWrapperName}").subprojects.each { subproject ->
+            if (subproject.name != project.name && subproject.tasks.findByName('openapi3') != null) {
+                dependsOn subproject.tasks.named('openapi3')
+                def restDocsPackage = 'generated-snippets'
+                from(subproject.layout.buildDirectory.file(restDocsPackage))
+                into(project.layout.buildDirectory.file(restDocsPackage))
+                println "  -  module :${moduleWrapperName}:${subproject.name}"
+            }
+        }
+    }
+}
+
+tasks.register('generateOasToSwagger', Copy) {
+    dependsOn('generateRestDocs')
+    dependsOn('openapi3')
+    from(project.layout.buildDirectory.file('api-spec/openapi3.yaml'))
+    into('src/main/resources/static/docs/swagger')
+}
+
+clean {
+    delete files('src/main/resources/static/docs/swagger/openapi3.yaml')
+}

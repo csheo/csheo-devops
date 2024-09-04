@@ -1,0 +1,36 @@
+## Common Profile
+spring:
+  base-package: com.entasdfs
+
+mybatis:
+  base-package: ${spring.base-package}.domain.*.infrastructure.provider.mybatis.**
+  mapper-locations: ${mybatis.base-package}.mapper
+  type-handlers-packages:
+    - ${mybatis.base-package}.typehandler.**
+    - ${spring.base-package}.common.mybatis.typehandler.**;
+  type-aliases-packages:
+    - ${spring.base-package}.domain.*.domain.data.**
+  query-id:
+    enabled: true
+    prefix: TEST.Template
+
+
+
+---
+## PRD Profile
+spring:
+  config.activate.on-profile: prd
+
+
+
+---
+## DEV Profile
+spring:
+  config.activate.on-profile: dev
+
+
+
+---
+## LOCAL Profile
+spring:
+  config.activate.on-profile: local

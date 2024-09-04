@@ -1,0 +1,22 @@
+def scanModules(Project project, String moduleWrapperName, List<String> excludedModules) {
+    println("> Scanning modules of :${moduleWrapperName}")
+
+    if (project.findProject(":${moduleWrapperName}") != null) {
+        project.project(":${moduleWrapperName}").subprojects.each { subproject ->
+            if (subproject.depth == 2) {
+                if (excludedModules.contains(subproject.name)) {
+                    println "  - Skipped module :${moduleWrapperName}:${subproject.name}"
+                } else {
+                    project.dependencies.add("implementation", project.project(":${moduleWrapperName}:${subproject.name}"))
+                    println "  - Added module :${moduleWrapperName}:${subproject.name}"
+                }
+            }
+        }
+    } else {
+        println("  - No modules")
+    }
+}
+
+ext {
+    scanModules = this.&scanModules
+}

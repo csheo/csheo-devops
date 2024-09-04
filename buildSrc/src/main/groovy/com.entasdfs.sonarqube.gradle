@@ -1,0 +1,22 @@
+plugins {
+    id "org.sonarqube"
+}
+
+class SonarConfigExtension {
+    String token = '' // generate token from sonarqube admin page(http://localhost:9000)
+}
+
+project.extensions.create("sonarConfig", SonarConfigExtension)
+
+sonar {
+    properties {
+        String projectKey = "entas${project.path}" // e.g. entas:common:commoncode
+        String token = project['sonarConfig']['token']
+        println("projectKey: ${projectKey}")
+        property "sonar.projectKey", projectKey
+        property "sonar.token", token
+        property "sonar.host.url", "http://localhost:9000"
+        property "sonar.sources", "src/main"
+        property "sonar.tests", "src/test"
+    }
+}

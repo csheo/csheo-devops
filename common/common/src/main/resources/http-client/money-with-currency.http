@@ -1,0 +1,14 @@
+###
+POST http://localhost:8080/api/money/exchange-rate
+Content-Type: application/json
+
+{
+  "productPrice": {
+    "currency": "KRW",
+    "price": 100000
+  },
+  "discountPrice": {
+    "currency": "KRW",
+    "price": 20000
+  }
+}

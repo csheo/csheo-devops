@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.entasdfs.common.mybatis.commoncode.infrastructure.provider.mybatis.mapper.ManagerMapper">
+	<resultMap id="ManagerRowMapper" type="com.entasdfs.common.mybatis.commoncode.domain.Manager">
+		<result property="managerType" column="manager_type_ckey" />
+		<result property="activityType" column="activity_type_ckey" />
+	</resultMap>
+
+	<resultMap id="ManagerReflectionRowMapper" type="com.entasdfs.common.mybatis.commoncode.domain.ManagerReflection">
+		<result property="managerType" column="manager_type_ckey" />
+		<result property="activityType" column="activity_type_ckey" />
+	</resultMap>
+
+	<resultMap id="ManagerWithKeyRowMapper" type="com.entasdfs.common.mybatis.commoncode.domain.ManagerWithKey">
+		<result property="managerTypeKey" column="manager_type_ckey" />
+		<result property="activityTypeKey" column="activity_type_ckey" />
+	</resultMap>
+
+	<select id="findAllOrders" resultMap="ManagerRowMapper">
+		SELECT 28 AS manager_type_ckey, 39 AS activity_type_ckey
+		FROM dual
+	</select>
+
+	<select id="findAllOrderReflections" resultMap="ManagerReflectionRowMapper">
+		SELECT 28 AS manager_type_ckey, 39 AS activity_type_ckey
+		FROM dual
+	</select>
+
+	<select id="findAllOrderWithKeys" resultMap="ManagerWithKeyRowMapper">
+		SELECT 28 AS manager_type_ckey, 39 AS activity_type_ckey
+		FROM dual
+	</select>
+
+	<select id="findByCondition" resultMap="ManagerReflectionRowMapper">
+		SELECT #{managerType} AS manager_type_ckey
+		FROM dual
+	</select>
+
+	<select id="findByConditionWithInStatement" resultMap="ManagerRowMapper">
+		select
+		<foreach collection="managerTypes" item="managerType" open="" close="" separator=",">
+			#{managerType} as manager_type_ckey
+		</foreach>
+		from dual
+	</select>
+</mapper>

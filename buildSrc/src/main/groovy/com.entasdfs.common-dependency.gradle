@@ -1,0 +1,15 @@
+plugins {
+    id 'com.entasdfs.auto-scan-modules'
+}
+
+class CommonDependencyExtension {
+    List<String> excludedModules = []
+}
+
+project.extensions.create("commonDependency", CommonDependencyExtension)
+
+project.afterEvaluate {
+    def moduleWrapperName = 'common'
+    def excludedModules = project.commonDependency.excludedModules
+    scanModules(project, moduleWrapperName, excludedModules)
+}

@@ -1,0 +1,16 @@
+jooq: # do not use internal property link(e.g., ${spring.application.name})
+  generator:
+    directory: src/generated
+    datasource:
+      url: jdbc:mysql://aaa.cluster-ro-ce4qzutyoils.ap-northeast-2.rds.amazonaws.com:3306
+      schema: sampledb
+      username: aaa
+      password: aaa
+
+logging:
+  level:
+    org.jooq:
+      Constants: debug
+      tools:
+        LoggerListener: debug
+    #com.entasdfs.jooq.config.LoggerListener: DEBUG

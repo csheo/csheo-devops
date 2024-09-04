@@ -1,0 +1,271 @@
+###
+GET http://localhost:8080/operation/internal/common-codes/all
+
+<> 2024-07-12T223225.200.json
+
+###
+POST http://localhost:8080/operation/internal/common-codes/:save
+Content-Type: application/json
+
+[
+  {
+    "codeId": "PAYMENT", "names": [{"languageCode": "ko-kr", "value": "결제"}, {"languageCode": "en-us", "value": "Payment"}],
+    "children": [
+      {
+        "codeId": "PAYMENT_STATE", "names": [{"languageCode": "ko-kr", "value": "결제상태"}, {"languageCode": "en-us", "value": "Payment Status"}],
+        "children": [
+          {"codeId": "SCHEDULED_PAYMENT_COMPLETED", "names": [{"languageCode": "ko-kr", "value": "예약결제 완료"}, {"languageCode": "en-us", "value": "Scheduled Payment Completed"}]},
+          {"codeId": "SCHEDULED_PAYMENT_CANCELLED", "names": [{"languageCode": "ko-kr", "value": "예약결제 취소"}, {"languageCode": "en-us", "value": "Scheduled Payment Cancelled"}]},
+          {"codeId": "PAYMENT_IN_PROGRESS", "names": [{"languageCode": "ko-kr", "value": "결제중"}, {"languageCode": "en-us", "value": "Payment In Progress"}]},
+          {"codeId": "PAYMENT_COMPLETED", "names": [{"languageCode": "ko-kr", "value": "결제완료"}, {"languageCode": "en-us", "value": "Payment Completed"}]},
+          {"codeId": "PAYMENT_FAILED", "names": [{"languageCode": "ko-kr", "value": "결제실패"}, {"languageCode": "en-us", "value": "Payment Failed"}]},
+          {"codeId": "REFUND_COMPLETED", "names": [{"languageCode": "ko-kr", "value": "환불완료"}, {"languageCode": "en-us", "value": "Refund Completed"}]}
+        ]
+      }
+    ]
+},
+{
+    "codeId": "ORDER", "names": [{"languageCode": "ko-kr", "value": "주문"}, {"languageCode": "en-us", "value": "Order"}],
+    "children": [
+      {
+        "codeId": "ORDER_STATE", "names": [{"languageCode": "ko-kr", "value": "주문상태"}, {"languageCode": "en-us", "value": "Order State"}],
+        "children": [
+          {"codeId": "ORDER_RECEIVED", "names": [{"languageCode": "ko-kr", "value": "주문접수"}, {"languageCode": "en-us", "value": "Order Received"}]},
+          {"codeId": "PICKING_SCHEDULED", "names": [{"languageCode": "ko-kr", "value": "피킹예정"}, {"languageCode": "en-us", "value": "Picking Scheduled"}]},
+          {"codeId": "PICKING_COMPLETED", "names": [{"languageCode": "ko-kr", "value": "피킹완료"}, {"languageCode": "en-us", "value": "Picking Completed"}]},
+          {"codeId": "PACKING_COMPLETED", "names": [{"languageCode": "ko-kr", "value": "패킹완료"}, {"languageCode": "en-us", "value": "Packing Completed"}]},
+          {"codeId": "PENDING_DELIVERY", "names": [{"languageCode": "ko-kr", "value": "미인도대기"}, {"languageCode": "en-us", "value": "Pending Delivery"}]},
+          {"codeId": "DELIVERY_COMPLETED", "names": [{"languageCode": "ko-kr", "value": "인도완료"}, {"languageCode": "en-us", "value": "Delivery Completed"}]}
+        ]
+      }
+    ]
+},
+{
+    "codeId": "CLAIM", "names": [{"languageCode": "ko-kr", "value": "클레임"}, {"languageCode": "en-us", "value": "Claim"}],
+    "children": [
+      {
+        "codeId": "CLAIM_STATE", "names": [{"languageCode": "ko-kr", "value": "클레임상태"}, {"languageCode": "en-us", "value": "Claim State"}],
+        "children": [
+          {"codeId": "ORDER_CANCELLED", "names": [{"languageCode": "ko-kr", "value": "주문취소"}, {"languageCode": "en-us", "value": "Order Cancelled"}]},
+          {"codeId": "RETURN_RECEIVED", "names": [{"languageCode": "ko-kr", "value": "반품접수"}, {"languageCode": "en-us", "value": "Return Received"}]},
+          {"codeId": "INCOMING_INSTRUCTED", "names": [{"languageCode": "ko-kr", "value": "입고지시"}, {"languageCode": "en-us", "value": "Incoming Instructed"}]},
+          {"codeId": "INCOMING_COMPLETED", "names": [{"languageCode": "ko-kr", "value": "입고완료"}, {"languageCode": "en-us", "value": "Incoming Completed"}]}
+        ]}
+    ,{
+        "codeId": "CLAIM_REASON", "names": [{"languageCode": "ko-kr", "value": "클레임사유"}, {"languageCode": "en-us", "value": "Claim Reason"}],
+        "children": [
+          {"codeId": "CARD_ERROR", "names": [{"languageCode": "ko-kr", "value": "카드비정상"}, {"languageCode": "en-us", "value": "Card Error"}]},
+          {"codeId": "OUT_OF_STOCK_DEFECTIVE_PRODUCT", "names": [{"languageCode": "ko-kr", "value": "재고부족/제품불량"}, {"languageCode": "en-us", "value": "Out of Stock Defective Product"}]},
+          {"codeId": "CUSTOMER_CHANGE_OF_MIND", "names": [{"languageCode": "ko-kr", "value": "고객변심"}, {"languageCode": "en-us", "value": "Customer Change of Mind"}]},
+          {"codeId": "DELIVERY_REFUSED", "names": [{"languageCode": "ko-kr", "value": "인도거부"}, {"languageCode": "en-us", "value": "Delivery Refused"}]},
+          {"codeId": "NOT_DELIVERED", "names": [{"languageCode": "ko-kr", "value": "미인도"}, {"languageCode": "en-us", "value": "Not Delivered"}]}
+        ]
+      }
+    ]
+}
+]
+
+###
+POST http://localhost:8080/operation/internal/common-codes/:save
+Content-Type: application/json
+
+[
+  {
+    "codeId": "CLAIM", "names": [{"languageCode": "ko-kr", "value": "클레임"}, {"languageCode": "en-us", "value": "Claim"}],
+    "children": [{
+      "codeId": "CLAIM_REASON", "names": [{"languageCode": "ko-kr", "value": "클레임사유"}, {"languageCode": "en-us", "value": "Claim Reason"}],
+      "children": [
+        {"codeId": "JUST", "names": [{"languageCode": "ko-kr", "value": "그냥"}, {"languageCode": "en-us", "value": "JUST"}]}
+      ]
+    }
+    ]
+  }
+]
+
+###
+@codeKey =324
+POST http://localhost:8080/operation/internal/common-codes/{{codeKey}}:saveChild
+Content-Type: application/json
+
+[
+  {"codeId": "JUST", "names": [{"languageCode": "ko-kr", "value": "그냥"}, {"languageCode": "en-us", "value": "JUST"}]}
+]
+
+###
+#- 주문 - ORDER
+#  - 메뉴 - MENU
+#    - 주문관리 - ORDER_MANAGEMENT
+#      - 실시간주문현황 - REALTIME_ORDER_State
+#        - 기간 - PERIOD_TYPE
+#          - 결제완료일 - PAYMENT_COMPLETION_DATE
+#          - 주문접수일 - ORDER_RECEIVED_DATE
+#          - 출국일 - DEPARTURE_DATE
+#        - 검색어 - KEYWORD_TYPE
+#          - 사용 안 함 - NOT_USED
+#          - 주문코드 - ORDER_CODE
+#          - 회원코드 - MEMBER_CODE
+#      - 상품별주문현황 - PRODUCT_ORDER_State
+#        - 검색어 - KEYWORD_TYPE
+#          - 기간계상품명 - PERIOD_PRODUCT_NAME
+#          - 온라인상품명 - ONLINE_PRODUCT_NAME
+#          - 기간계상품코드 - CORE_SYSTEM_PRODUCT_CODE
+#          - 온라인상품코드 - ONLINE_PRODUCT_CODE
+#          - 매장코드 - SHOP_CODE
+#          - 레퍼런스코드 - REFERENCE_NUMBER
+#      - 주문목록 - ORDER_LIST
+#        - 기간 - PERIOD_TYPE
+#          - 결제완료일 - PAYMENT_COMPLETION_DATE
+#          - 피킹예정일 - PICKING_SCHEDULED_DATE
+#          - 출국일 - DEPARTURE_DATE
+#        - 검색어 - KEYWORD_TYPE
+#          - 주문코드 - ORDER_CODE
+#          - 상품주문코드 - PRODUCT_ORDER_CODE
+#          - 회원코드 - MEMBER_CODE
+#          - 기간계상품코드 - CORE_SYSTEM_PRODUCT_CODE
+#          - 온라인상품코드 - ONLINE_PRODUCT_CODE
+#          - 매장코드 - SHOP_CODE
+#          - 레퍼런스넘버 - REFERENCE_NUMBER
+#          - 품목코드 - ITEM_CODE
+#      - 피킹/패킹목록 - PICKING_PACKING_LIST
+#        - 기간 - PERIOD_TYPE
+#          - 결제완료일 - PAYMENT_COMPLETION_DATE
+#          - 피킹예정일 - PICKING_SCHEDULED_DATE
+#          - 출국일 - DEPARTURE_DATE
+#        - 검색어 - KEYWORD_TYPE
+#          - 주문코드 - ORDER_CODE
+#          - 상품주문코드 - PRODUCT_ORDER_CODE
+#          - 회원코드 - MEMBER_CODE
+#          - 기간계상품코드 - CORE_SYSTEM_PRODUCT_CODE
+#          - 온라인상품코드 - ONLINE_PRODUCT_CODE
+#          - 매장코드 - SHOP_CODE
+#          - 레퍼런스넘버 - REFERENCE_NUMBER
+#          - 품목코드 - ITEM_CODE
+#      - 인도완료목록
+#        - 기간 - PERIOD_TYPE
+#        - 검색어 - KEYWORD_TYPE
+
+POST http://localhost:8080/operation/internal/common-codes/:save
+Content-Type: application/json
+
+[
+  {
+    "codeId": "ORDER", "names": [{"languageCode": "ko-kr", "value": "주문"}, {"languageCode": "en-us", "value": "Order"}],
+    "children": [
+      {
+        "codeId": "MENU", "names": [{"languageCode": "ko-kr", "value": "메뉴"}, {"languageCode": "en-us", "value": "Menu"}],
+        "children": [
+          {
+            "codeId": "ORDER_MANAGEMENT", "names": [{"languageCode": "ko-kr", "value": "주문관리"}, {"languageCode": "en-us", "value": "Order Management"}],
+            "children": [
+              {
+                "codeId": "REALTIME_ORDER_STATUS", "names": [{"languageCode": "ko-kr", "value": "실시간주문현황"}, {"languageCode": "en-us", "value": "Realtime Order Status"}],
+                "children": [
+                  {
+                    "codeId": "PERIOD_TYPE", "names": [{"languageCode": "ko-kr", "value": "기간"}, {"languageCode": "en-us", "value": "Period Type"}],
+                    "children": [
+                      {"codeId": "PAYMENT_COMPLETION_DATE", "names": [{"languageCode": "ko-kr", "value": "결제완료일"}, {"languageCode": "en-us", "value": "Payment Completion Date"}]},
+                      {"codeId": "ORDER_RECEIVED_DATE", "names": [{"languageCode": "ko-kr", "value": "주문접수일"}, {"languageCode": "en-us", "value": "Order Received Date"}]},
+                      {"codeId": "DEPARTURE_DATE", "names": [{"languageCode": "ko-kr", "value": "출국일"}, {"languageCode": "en-us", "value": "Departure Date"}]
+                      }
+                    ]
+                  },
+                  {
+                    "codeId": "KEYWORD_TYPE", "names": [{"languageCode": "ko-kr", "value": "검색어"}, {"languageCode": "en-us", "value": "Keyword Type"}],
+                    "children": [
+                      {"codeId": "NOT_USED", "names": [{"languageCode": "ko-kr", "value": "사용 안 함"}, {"languageCode": "en-us", "value": "Not Used"}]},
+                      {"codeId": "ORDER_CODE", "names": [{"languageCode": "ko-kr", "value": "주문코드"}, {"languageCode": "en-us", "value": "Order Code"}]},
+                      {"codeId": "MEMBER_CODE", "names": [{"languageCode": "ko-kr", "value": "회원코드"}, {"languageCode": "en-us", "value": "Member Code"}]}
+                    ]
+                    }
+                ]
+                },
+                {
+                    "codeId": "PRODUCT_ORDER_STATUS", "names": [{"languageCode": "ko-kr", "value": "상품별주문현황"}, {"languageCode": "en-us", "value": "Product Order Status"}],
+                    "children": [
+                        {
+                        "codeId": "KEYWORD_TYPE", "names": [{"languageCode": "ko-kr", "value": "검색어"}, {"languageCode": "en-us", "value": "Keyword Type"}],
+                        "children": [
+                            {"codeId": "PERIOD_PRODUCT_NAME", "names": [{"languageCode": "ko-kr", "value": "기간계상품명"}, {"languageCode": "en-us", "value": "Period Product Name"}]},
+                            {"codeId": "ONLINE_PRODUCT_NAME", "names": [{"languageCode": "ko-kr", "value": "온라인상품명"}, {"languageCode": "en-us", "value": "Online Product Name"}]},
+                            {"codeId": "CORE_SYSTEM_PRODUCT_CODE", "names": [{"languageCode": "ko-kr", "value": "기간계상품코드"}, {"languageCode": "en-us", "value": "Core System Product Code"}]},
+                            {"codeId": "ONLINE_PRODUCT_CODE", "names": [{"languageCode": "ko-kr", "value": "온라인상품코드"}, {"languageCode": "en-us", "value": "Online Product Code"}]},
+                            {"codeId": "SHOP_CODE", "names": [{"languageCode": "ko-kr", "value": "매장코드"}, {"languageCode": "en-us", "value": "Shop Code"}]},
+                            {"codeId": "REFERENCE_NUMBER", "names": [{"languageCode": "ko-kr", "value": "레퍼런스코드"}, {"languageCode": "en-us", "value": "Reference Number"}]}
+                        ]
+                        }
+                    ]
+                },
+                {
+                    "codeId": "ORDER_LIST", "names": [{"languageCode": "ko-kr", "value": "주문목록"}, {"languageCode": "en-us", "value": "Order List"}],
+                    "children": [
+                        {
+                        "codeId": "PERIOD_TYPE", "names": [{"languageCode": "ko-kr", "value": "기간"}, {"languageCode": "en-us", "value": "Period Type"}],
+                        "children": [
+                            {"codeId": "PAYMENT_COMPLETION_DATE", "names": [{"languageCode": "ko-kr", "value": "결제완료일"}, {"languageCode": "en-us", "value": "Payment Completion Date"}]},
+                            {"codeId": "PICKING_SCHEDULED_DATE", "names": [{"languageCode": "ko-kr", "value": "피킹예정일"}, {"languageCode": "en-us", "value": "Picking Scheduled Date"}]},
+                            {"codeId": "DEPARTURE_DATE", "names": [{"languageCode": "ko-kr", "value": "출국일"}, {"languageCode": "en-us", "value": "Departure Date"}]
+                            }
+                        ]
+                        },
+                        {
+                        "codeId": "KEYWORD_TYPE", "names": [{"languageCode": "ko-kr", "value": "검색어"}, {"languageCode": "en-us", "value": "Keyword Type"}],
+                        "children": [
+                            {"codeId": "ORDER_CODE", "names": [{"languageCode": "ko-kr", "value": "주문코드"}, {"languageCode": "en-us", "value": "Order Code"}]},
+                            {"codeId": "PRODUCT_ORDER_CODE", "names": [{"languageCode": "ko-kr", "value": "상품주문코드"}, {"languageCode": "en-us", "value": "Product Order Code"}]},
+                            {"codeId": "MEMBER_CODE", "names": [{"languageCode": "ko-kr", "value": "회원코드"}, {"languageCode": "en-us", "value": "Member Code"}]},
+                            {"codeId": "CORE_SYSTEM_PRODUCT_CODE", "names": [{"languageCode": "ko-kr", "value": "기간계상품코드"}, {"languageCode": "en-us", "value": "Core System Product Code"}]},
+                            {"codeId": "ONLINE_PRODUCT_CODE", "names": [{"languageCode": "ko-kr", "value": "온라인상품코드"}, {"languageCode": "en-us", "value": "Online Product Code"}]},
+                            {"codeId": "SHOP_CODE", "names": [{"languageCode": "ko-kr", "value": "매장코드"}, {"languageCode": "en-us", "value": "Shop Code"}]},
+                            {"codeId": "REFERENCE_NUMBER", "names": [{"languageCode": "ko-kr", "value": "레퍼런스넘버"}, {"languageCode": "en-us", "value": "Reference Number"}]},
+                            {"codeId": "ITEM_CODE", "names": [{"languageCode": "ko-kr", "value": "품목코드"}, {"languageCode": "en-us", "value": "Item Code"}]}
+                        ]
+                        }
+                  ]
+                },
+                {
+                    "codeId": "PICKING_PACKING_LIST", "names": [{"languageCode": "ko-kr", "value": "피킹/패킹목록"}, {"languageCode": "en-us", "value": "Picking/Packing List"}],
+                    "children": [
+                        {
+                        "codeId": "PERIOD_TYPE", "names": [{"languageCode": "ko-kr", "value": "기간"}, {"languageCode": "en-us", "value": "Period Type"}],
+                        "children": [
+                            {"codeId": "PAYMENT_COMPLETION_DATE", "names": [{"languageCode": "ko-kr", "value": "결제완료일"}, {"languageCode": "en-us", "value": "Payment Completion Date"}]},
+                            {"codeId": "PICKING_SCHEDULED_DATE", "names": [{"languageCode": "ko-kr", "value": "피킹예정일"}, {"languageCode": "en-us", "value": "Picking Scheduled Date"}]},
+                            {"codeId": "DEPARTURE_DATE", "names": [{"languageCode": "ko-kr", "value": "출국일"}, {"languageCode": "en-us", "value": "Departure Date"}]
+                            }
+                        ]
+                        },
+                        {
+                        "codeId": "KEYWORD_TYPE", "names": [{"languageCode": "ko-kr", "value": "검색어"}, {"languageCode": "en-us", "value": "Keyword Type"}],
+                        "children": [
+                            {"codeId": "ORDER_CODE", "names": [{"languageCode": "ko-kr", "value": "주문코드"}, {"languageCode": "en-us", "value": "Order Code"}]},
+                            {"codeId": "PRODUCT_ORDER_CODE", "names": [{"languageCode": "ko-kr", "value": "상품주문코드"}, {"languageCode": "en-us", "value": "Product Order Code"}]},
+                            {"codeId": "MEMBER_CODE", "names": [{"languageCode": "ko-kr", "value": "회원코드"}, {"languageCode": "en-us", "value": "Member Code"}]},
+                            {"codeId": "CORE_SYSTEM_PRODUCT_CODE", "names": [{"languageCode": "ko-kr", "value": "기간계상품코드"}, {"languageCode": "en-us", "value": "Core System Product Code"}]},
+                            {"codeId": "ONLINE_PRODUCT_CODE", "names": [{"languageCode": "ko-kr", "value": "온라인상품코드"}, {"languageCode": "en-us", "value": "Online Product Code"}]},
+                            {"codeId": "SHOP_CODE", "names": [{"languageCode": "ko-kr", "value": "매장코드"}, {"languageCode": "en-us", "value": "Shop Code"}]},
+                            {"codeId": "REFERENCE_NUMBER", "names": [{"languageCode": "ko-kr", "value": "레퍼런스넘버"}, {"languageCode": "en-us", "value": "Reference Number"}]},
+                            {"codeId": "ITEM_CODE", "names": [{"languageCode": "ko-kr", "value": "품목코드"}, {"languageCode": "en-us", "value": "Item Code"}]}
+                        ]
+                        }
+                      ]
+                    },
+                    {
+                    "codeId": "DELIVERY_COMPLETED_LIST", "names": [{"languageCode": "ko-kr", "value": "인도완료목록"}, {"languageCode": "en-us", "value": "Delivery Completed List"}],
+                    "children": [
+                        {
+                        "codeId": "PERIOD_TYPE", "names": [{"languageCode": "ko-kr", "value": "기간"}, {"languageCode": "en-us", "value": "Period Type"}]
+                        },
+                        {
+                        "codeId": "KEYWORD_TYPE", "names": [{"languageCode": "ko-kr", "value": "검색어"}, {"languageCode": "en-us", "value": "Keyword Type"}]
+                        }
+                    ]
+                    }
+            ]
+            }
+        ]
+        }
+    ]
+    }
+]
+
+

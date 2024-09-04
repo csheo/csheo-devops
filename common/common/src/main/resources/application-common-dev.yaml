@@ -1,0 +1,9 @@
+logging:
+  level:
+    jdbc:
+      sqlonly: debug
+      sqltiming: debug
+      resultsettable: debug
+      audit: off
+      resultset: off
+      connection: off

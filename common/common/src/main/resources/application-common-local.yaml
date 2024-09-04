@@ -1,0 +1,37 @@
+####----------------------------------
+## Spring
+####----------------------------------
+spring:
+  #### DataSource
+  datasource:
+    reader:
+      url: jdbc:mysql://aaa.ap-northeast-2.rds.amazonaws.com:3306/sampledb?zeroDateTimeBehavior=convertToNull&characterEncoding=UTF-8&serverTimezone=Asia/Seoul&allowMultiQueries=true&useAffectedRows=true&connectionCollation=utf8mb4_general_ci
+      username: aaa
+      password: aaa
+
+    writer:
+      url: jdbc:mysql://aaa.ap-northeast-2.rds.amazonaws.com:3306/sampledb?zeroDateTimeBehavior=convertToNull&characterEncoding=UTF-8&serverTimezone=Asia/Seoul&allowMultiQueries=true&useAffectedRows=true&connectionCollation=utf8mb4_general_ci
+      username: aaa
+      password: aaa
+
+    hikari:
+      minimum-idle: 3
+      maximum-pool-size: 6
+
+logging:
+  pattern:
+    correlation: ""
+  level:
+    com.entasdfs: debug
+    org.springframework.web: info
+    io.awspring.cloud: debug
+
+    jdbc:
+      sqlonly: off
+      sqltiming: debug
+      resultsettable: debug
+      audit: off
+      resultset: off
+      connection: off
+
+      # TODO: connection 로그 삭제

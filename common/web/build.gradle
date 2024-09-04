@@ -1,0 +1,16 @@
+plugins {
+    id 'com.entasdfs.build-convention'
+}
+
+dependencies {
+    implementation project(':common:common')
+    implementation project(':common:security')
+
+    implementation 'org.springframework.boot:spring-boot-starter-actuator' // tracer dependency
+    implementation 'io.micrometer:micrometer-tracing-bridge-brave' // tracer
+    implementation 'io.micrometer:micrometer-registry-prometheus' // for prometheus metrics
+}
+
+bootJar {
+    enabled = false
+}

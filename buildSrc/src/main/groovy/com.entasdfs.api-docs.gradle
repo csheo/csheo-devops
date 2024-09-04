@@ -1,0 +1,9 @@
+plugins {
+    id 'com.epages.restdocs-api-spec'
+}
+
+dependencies {
+    testImplementation testFixtures(project(':common:commoncode'))
+    testImplementation testFixtures(project(":common:api-docs"))
+    testImplementation testFixtures(project(":common:tester"))
+}

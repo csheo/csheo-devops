@@ -1,0 +1,17 @@
+plugins {
+    id 'com.entasdfs.build-convention'
+    id 'com.entasdfs.generated'
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-aop'
+    implementation 'org.springframework:spring-tx'
+
+    implementation project(':common:commoncode')
+    testImplementation testFixtures(project(":common:commoncode"))
+    testImplementation testFixtures(project(":common:tester"))
+}
+
+bootJar {
+    enabled = false
+}

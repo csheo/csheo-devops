@@ -1,0 +1,19 @@
+def generatorDirectory = jooqProperty.jooq.generator.directory
+
+tasks.register('copyCommonCodeConstantDsl', Copy) {
+    from "$generatorDirectory/commoncode/constant"
+    into "$rootProject.projectDir/common/commoncode/src/generated/com/entasdfs/common/commoncode/generated/constant"
+}
+
+tasks.register('copyCommonCodeInitializerDsl', Copy) {
+    from "$generatorDirectory/commoncode/initializer"
+    into "$rootProject.projectDir/common/commoncode/src/testFixtures/java/com/entasdfs/common/commoncode/generated/core"
+}
+
+tasks.register('deleteCommonCodeSourceDirectory', Delete) {
+    delete "$generatorDirectory/commoncode"
+}
+
+generateDslJooq.finalizedBy copyCommonCodeConstantDsl
+copyCommonCodeConstantDsl.finalizedBy copyCommonCodeInitializerDsl
+copyCommonCodeInitializerDsl.finalizedBy deleteCommonCodeSourceDirectory

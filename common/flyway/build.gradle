@@ -1,0 +1,96 @@
+buildscript {
+    ext {
+        flywayVersion = project['flyway.version']
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.flywaydb:flyway-mysql:${flywayVersion}"
+        classpath "org.yaml:snakeyaml:${project['snakeyaml.version']}"
+    }
+}
+
+plugins {
+    id 'com.entasdfs.build-convention'
+    id "org.flywaydb.flyway" version "$flywayVersion"
+}
+
+dependencies {
+    implementation 'com.mysql:mysql-connector-j'
+}
+
+
+import org.flywaydb.gradle.task.FlywayMigrateTask
+import org.yaml.snakeyaml.Yaml
+
+private Object getFlywayProperties() {
+    def applicationPropertiesFile = new File("$projectDir/src/main/resources/application-flyway.yaml")
+    def applicationProperties = new Yaml().load(applicationPropertiesFile.newInputStream())
+    def flywayProperties = applicationProperties['spring']['flyway']
+    flywayProperties
+}
+
+flyway {
+    println("flyway.url: ${flywayProperties['url']}")
+    println("flyway.user: ${flywayProperties['user']}")
+    println("flyway.password: ${flywayProperties['password']}")
+    url = "${flywayProperties['url']}"
+    user = "${flywayProperties['user']}"
+    password = "${flywayProperties['password']}"
+    locations = ["${flywayProperties['locations']}"]
+    table = "${flywayProperties['table']}"
+    baselineOnMigrate = "${flywayProperties['baseline-on-migrate']}"
+    validateOnMigrate = true
+}
+
+tasks.register('flywayDomainMigrate', FlywayMigrateTask) {
+    println("flyway.url: ${flywayProperties['url']}")
+    println("flyway.user: ${flywayProperties['user']}")
+    println("flyway.password: ${flywayProperties['password']}")
+    locations = ["${flywayProperties['domain']['locations']}"]
+    table = "${flywayProperties['domain']['table']}"
+    baselineOnMigrate = "${flywayProperties['domain']['baseline-on-migrate']}"
+    baselineVersion = "${flywayProperties['domain']['baseline-version']}"
+    baselineDescription = "${flywayProperties['domain']['baseline-description']}"
+}
+
+tasks.named('flywayDomainMigrate').configure {
+    dependsOn 'flywayMigrate'
+    enabled = false // 잠시 disable
+}
+
+flywayBaseline {
+    enabled = false
+}
+
+flywayClean {
+    enabled = false
+}
+
+flywayInfo {
+    enabled = false
+}
+
+flywayMigrate {
+    //def getenv = System.getenv('SPRING_PROFILES_ACTIVE')
+    //enabled = getenv == 'local' || getenv == 'dev'
+    enabled = false  // 잠시 disable
+}
+
+flywayRepair {
+    enabled = false
+}
+
+flywayUndo {
+    enabled = false
+}
+
+bootJar {
+    enabled = false
+}
+
+
+
+
+

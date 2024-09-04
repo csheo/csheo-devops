@@ -1,0 +1,39 @@
+plugins {
+    id 'com.entasdfs.build-convention'
+    id 'nu.studer.jooq'
+    id 'com.entasdfs.sonarqube'
+    id 'com.entasdfs.generated'
+}
+
+sonarConfig {
+    token = System.getenv("SONAR_COMMON_JOOQ_TOKEN")
+}
+
+dependencies {
+    runtimeOnly 'com.mysql:mysql-connector-j'
+    //def javaMoneyVersion = project['java.money.moneta.version']
+    //implementation "org.javamoney:moneta:${javaMoneyVersion}"
+
+    // jooq
+    def jooqVersion = project['jooq.version']
+    api "org.jooq:jooq:${jooqVersion}"
+    api 'org.springframework.boot:spring-boot-starter-jooq'
+    jooqGenerator 'com.mysql:mysql-connector-j'
+    jooqGenerator "org.jooq:jooq:${jooqVersion}"
+    jooqGenerator "org.jooq:jooq-meta:${jooqVersion}"
+    implementation project(':common:jooq:jooq-custom')
+    jooqGenerator project(':common:jooq:jooq-custom')
+
+    implementation project(':common:commoncode')
+    implementation project(':common:multilingual')
+    implementation project(':common:common')
+
+    testImplementation testFixtures(project(":common:commoncode"))
+    testImplementation testFixtures(project(":common:tester"))
+}
+
+apply from: 'gradle-scripts/jooq.gradle'
+
+bootJar {
+    enabled = false
+}

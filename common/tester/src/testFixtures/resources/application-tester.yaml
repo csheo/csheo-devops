@@ -1,0 +1,59 @@
+## Common Profile
+server:
+  servlet:
+    encoding:
+      force-response: true
+
+spring:
+  flyway:
+    enabled: false
+
+
+
+---
+## PRD Profile
+spring:
+  config.activate.on-profile: prd
+
+  datasource:
+    url:
+    username:
+    password:
+
+
+
+---
+## DEV Profile
+spring:
+  config.activate.on-profile: dev
+
+  datasource:
+    url: jdbc:mysql://aaa.cluster-ro-ce4qzutyoils.ap-northeast-2.rds.amazonaws.com:3306/sampledb?zeroDateTimeBehavior=convertToNull&characterEncoding=UTF-8&serverTimezone=Asia/Seoul&allowMultiQueries=true&connectionCollation=utf8mb4_general_ci
+    username: aaa
+    password: aaa!@#
+
+
+
+---
+## LOCAL Profile
+spring:
+  config.activate.on-profile: local
+
+  datasource:
+    url: jdbc:mysql://aaa.cluster-ro-ce4qzutyoils.ap-northeast-2.rds.amazonaws.com:3306/sampledb?zeroDateTimeBehavior=convertToNull&characterEncoding=UTF-8&serverTimezone=Asia/Seoul&allowMultiQueries=true&connectionCollation=utf8mb4_general_ci
+    username: aaa
+    password: aaa!@#
+
+
+---
+## TESTER Profile
+spring:
+  config.activate.on-profile: tester
+
+  datasource:
+    url: jdbc:mysql://aaa.cluster-ro-ce4qzutyoils.ap-northeast-2.rds.amazonaws.com:3306/sampledb?zeroDateTimeBehavior=convertToNull&characterEncoding=UTF-8&serverTimezone=Asia/Seoul&allowMultiQueries=true&connectionCollation=utf8mb4_general_ci
+    username: aaa
+    password: aaa!@#
+
+logging:
+  level.org.jooq.tools.LoggerListener: DEBUG

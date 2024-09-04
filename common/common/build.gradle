@@ -1,0 +1,30 @@
+plugins {
+    id 'com.entasdfs.build-convention'
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-jooq'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'org.springframework.boot:spring-boot-starter-aop'
+    //implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+
+    def springCloudVersion = project['spring.cloud.version']
+    implementation platform("org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}")
+    implementation "org.springframework.cloud:spring-cloud-starter-openfeign"
+
+    def shedlockVersion = project['shedlock.version']
+    api "net.javacrumbs.shedlock:shedlock-spring:${shedlockVersion}"
+   // implementation "net.javacrumbs.shedlock:shedlock-provider-redis-spring:${shedlockVersion}"
+
+    def log4jdbcVersion = project['log4jdbc.version']
+    implementation "org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4.1:${log4jdbcVersion}"
+
+    def javaMoneyMonetaVersion = project['java.money.moneta.version']
+    api "org.javamoney:moneta:${javaMoneyMonetaVersion}"
+
+    testImplementation testFixtures(project(":common:tester"))
+}
+
+bootJar {
+    enabled = false
+}

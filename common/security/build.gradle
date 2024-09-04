@@ -1,0 +1,16 @@
+plugins {
+    id 'com.entasdfs.build-convention'
+}
+
+dependencies {
+    implementation project(':common:common')
+    api 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    implementation 'org.springframework.boot:spring-boot-starter-aop'
+    implementation 'com.github.ulisesbocchio:jasypt-spring-boot-starter:3.0.5'
+    testImplementation 'org.springframework.security:spring-security-test'
+}
+
+bootJar {
+    enabled = false
+}

@@ -1,0 +1,28 @@
+plugins {
+    id 'com.entasdfs.build-convention'
+    id 'com.entasdfs.test-fixtures'
+    id 'com.entasdfs.sonarqube'
+    id 'com.entasdfs.generated'
+}
+
+sonarConfig {
+    token = System.getenv("SONAR_COMMON_COMMONCODE_TOKEN")
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-aop'
+    
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    //implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+
+    implementation 'org.webjars:bootstrap:5.3.3'
+    implementation 'org.webjars.npm:tabulator-tables:6.2.1'
+    // https://mvnrepository.com/artifact/org.webjars.npm/bootstrap-icons
+    implementation 'org.webjars.npm:bootstrap-icons:1.11.3'
+
+    testImplementation testFixtures(project(":common:tester"))
+}
+
+bootJar {
+    enabled = false
+}

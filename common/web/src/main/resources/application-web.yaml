@@ -1,0 +1,88 @@
+## Common Profile
+
+#### Server - Servlet Container
+server:
+  port: 8080
+  tomcat:
+    connection-timeout: 2800
+    keep-alive-timeout: -1
+    max-keep-alive-requests: -1
+    threads:
+      max: 200
+      min-spare: 200
+  accept-count: 100
+  shutdown: graceful
+  forward-headers-strategy: native
+
+
+#### Spring
+spring:
+  #### Binding
+  binding:
+    string-trim: true
+    string-empty-as-null: false
+
+
+#### Actuator
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, prometheus
+  tracing:
+    sampling:
+      probability: 1.0
+  server:
+    port: 8081
+
+
+
+---
+## PRD Profile
+spring:
+  config.activate.on-profile: prd
+
+## Response Handling
+response-handling:
+  exception:
+    className: false
+    message: true
+
+
+
+---
+## DEV Profile
+spring:
+  config.activate.on-profile: dev
+
+## Response Handling
+response-handling:
+  exception:
+    className: true
+    message: true
+
+
+
+---
+## LOCAL Profile
+spring:
+  config.activate.on-profile: local
+
+## Response Handling
+response-handling:
+  exception:
+    className: true
+    message: true
+
+server:
+  port: 8080  #기본
+  #port: 8091  #상품(Product)
+  #port: 8092  #주문(Order)
+  #port: 8093  #회원(Member)
+  #port: 8094  #운영(Operation)
+  #port: 8099  #API Gateway
+
+#### Actuator
+management:
+  server:
+    port: ${server.port}

@@ -1,0 +1,15 @@
+plugins {
+    id 'com.entasdfs.auto-scan-modules'
+}
+
+class ExternalDomainDependencyExtension {
+    List<String> excludedModules = []
+}
+
+project.extensions.create("externalDomainDependency", ExternalDomainDependencyExtension)
+
+project.afterEvaluate {
+    def moduleWrapperName = 'external-domain'
+    def excludedModules = project.externalDomainDependency.excludedModules
+    scanModules(project, moduleWrapperName, excludedModules)
+}
