@@ -1,0 +1,11 @@
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  name: backstage-collection
+  description: A collection of Example Software Templates for Backstage
+spec:
+  type: url
+  targets:
+    - templates/spring-boot-basic/template.yaml
+    - templates/spring-boot-basic-on-kubernetes/template.yaml
+    - templates/spring-boot-basic-on-openshift/template.yaml
