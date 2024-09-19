@@ -1,0 +1,23 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: my-springboot-app
+  description: This is my Spring Boot application
+  annotations:
+    github.com/project-slug: mz/my-springboot-app
+    backstage.io/techdocs-ref: dir:.
+  tags:
+    - java
+    - spring
+    - web
+  links:
+    - url: https://springboot.aimegazone.com
+      title: Application URL
+      icon: website
+spec:
+  type: service
+  lifecycle: production
+  owner: user:csheo/Platform Architect Lab
+  system: DX Labs-system
+  providesApis:
+    - my-springboot-app-api
