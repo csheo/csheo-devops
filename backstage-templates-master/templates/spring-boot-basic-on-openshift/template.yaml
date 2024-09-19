@@ -14,7 +14,7 @@ metadata:
     - openshift
     - argocd
 spec:
-  owner: piomin
+  owner: jmryu
   system: microservices
   type: service
 
@@ -36,7 +36,7 @@ spec:
         orgName:
           title: Organization name
           type: string
-          default: piomin
+          default: jmryu
         appName:
           title: App name
           type: string
