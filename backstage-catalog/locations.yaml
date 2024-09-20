@@ -1,0 +1,11 @@
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  name: locations
+spec:
+  targets:
+    - https://bitbucket.org/architecturelabs/backstage-catalog/src/main/apis.yaml
+    - https://bitbucket.org/architecturelabs/backstage-catalog/src/main/components.yaml
+    - https://bitbucket.org/architecturelabs/backstage-catalog/src/main/domains.yaml
+    - https://bitbucket.org/architecturelabs/backstage-catalog/src/main/resources.yaml
+    - https://bitbucket.org/architecturelabs/backstage-catalog/src/main/systems.yaml

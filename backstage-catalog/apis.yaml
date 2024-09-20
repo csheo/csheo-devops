@@ -1,0 +1,10 @@
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  name: location-apis
+spec:
+  targets:
+    - https://bitbucket.org/architecturelabs/backstage-catalog/src/main/catalogs/apis/petstore.yaml
+    - https://bitbucket.org/architecturelabs/backstage-catalog/src/main/catalogs/apis/argocd.yaml
+    - https://bitbucket.org/architecturelabs/backstage-catalog/src/main/catalogs/apis/nexus-repo-manager-3.yaml
+

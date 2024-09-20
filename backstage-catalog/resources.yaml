@@ -1,0 +1,14 @@
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  name: resources
+  description: A collection of all resources
+spec:
+  targets:
+    - https://bitbucket.org/architecturelabs/backstage-catalog/src/main/catalogs/resources/pgdb.yaml
+    - https://bitbucket.org/architecturelabs/backstage-catalog/src/main/catalogs/resources/argocd.yaml
+    - https://bitbucket.org/architecturelabs/backstage-catalog/src/main/catalogs/resources/obc.yaml
+    - https://bitbucket.org/architecturelabs/backstage-catalog/src/main/catalogs/resources/keycloak.yaml
+    - https://bitbucket.org/architecturelabs/backstage-catalog/src/main/catalogs/resources/github.yaml
+    - https://bitbucket.org/architecturelabs/backstage-catalog/src/main/catalogs/resources/sonarqube.yaml
+    - https://bitbucket.org/architecturelabs/backstage-catalog/src/main/catalogs/resources/nexus.yaml

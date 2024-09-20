@@ -1,0 +1,13 @@
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  name: location-organizations-mzd
+  description: MZD 그룹
+spec:
+  targets:
+    - https://bitbucket.org/architecturelabs/backstage-catalog/src/main/organizations/mzd/groups/company.yaml
+    - https://bitbucket.org/architecturelabs/backstage-catalog/src/main/organizations/mzd/groups/department-dxlabs.yaml
+    - https://bitbucket.org/architecturelabs/backstage-catalog/src/main/organizations/mzd/groups/team-platform-architecture.yaml
+    - https://bitbucket.org/architecturelabs/backstage-catalog/src/main/organizations/mzd/groups/team-cloud-transformation.yaml
+    - https://bitbucket.org/architecturelabs/backstage-catalog/src/main/organizations/mzd/groups/team-ux-development.yaml
+    - https://bitbucket.org/architecturelabs/backstage-catalog/src/main/organizations/mzd/groups/users.yaml

@@ -1,0 +1,21 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: component-backstage-infrastructure-network
+  title: Terraform Network
+  description: Terraform Network
+  links:
+    - url: https://github.com/mzd-lab/terraform
+      title: GitHub
+      icon: github
+  annotations:
+    backstage.io/source-location: url:https://github.com/mzd-lab/terraform
+    terraform/organization: MZD
+    terraform/workspace: backstage-network
+    github.com/project-slug: 'mzd-lab/terraform'
+spec:
+  owner: mzd-department-dxlabs
+  system: system-backstage
+  type: infra
+  lifecycle: pilot
+  providesApis: []

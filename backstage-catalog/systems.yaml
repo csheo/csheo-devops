@@ -1,0 +1,11 @@
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  name: systems
+  description: A collection of all Backstage example systems
+spec:
+  targets:
+    - https://bitbucket.org/architecturelabs/backstage-catalog/src/main/catalogs/systems/backstage.yaml
+    - https://bitbucket.org/architecturelabs/backstage-catalog/src/main/catalogs/systems/incheondfs.yaml
+    - https://bitbucket.org/architecturelabs/backstage-catalog/src/main/catalogs/systems/megazone.yaml
+    - https://bitbucket.org/architecturelabs/backstage-catalog/src/main/catalogs/systems/commerce.yaml

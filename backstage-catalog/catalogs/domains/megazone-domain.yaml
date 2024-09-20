@@ -1,0 +1,14 @@
+apiVersion: backstage.io/v1alpha1
+kind: Domain
+metadata:
+  name: megazone
+  description: megazone
+  title: megazone
+  links:
+    - url: https://backstage.megazone.monster
+      title: Domain Readme
+    - url: https://backstage.megazone.monster
+      title: Domain Metrics Dashboard
+      icon: dashboard
+spec:
+  owner: mzd-department-dxlabs

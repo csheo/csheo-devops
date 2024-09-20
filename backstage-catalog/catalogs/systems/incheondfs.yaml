@@ -1,0 +1,10 @@
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: system-incheondfs
+spec:
+  owner: mzd-department-dxlabs
+  domain: domain-iiac
+  type: service
+
+

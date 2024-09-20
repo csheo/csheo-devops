@@ -1,0 +1,8 @@
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  name: location-components
+spec:
+  targets:
+    - https://bitbucket.org/architecturelabs/backstage-catalog/src/main/catalogs/components/backstage/infra-network.yaml
+    - https://bitbucket.org/architecturelabs/backstage-catalog/src/main/catalogs/components/starter/starter.yaml

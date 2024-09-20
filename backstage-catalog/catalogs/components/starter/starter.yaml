@@ -1,0 +1,24 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: starter
+  description: starter for backstage
+  annotations:
+    backstage.io/managed-by-location: url:https://github.com/mzd-lab/starter/blob/main/catalog-info.yaml
+    backstage.io/kubernetes-id: starter
+    backstage.io/techdocs-ref: dir:.
+    github.com/project-slug: mzd-lab/starter
+    jenkins.io/job-full-name: starter
+    sonarqube.org/project-key: default/megaone_starter
+    nexus-repository-manager/docker.image-name: starter
+    argocd/app-name: starter
+    
+  links:
+    - url: https://github.com/mzd-lab/starter
+      title: GitHub Repo
+      icon: github
+spec:
+  type: service
+  lifecycle: experimental
+  owner: mzd-department-dxlabs
+  system: system-backstage
